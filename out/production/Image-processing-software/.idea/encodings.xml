@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/imageView/FFTFilter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/Frame.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/IFileFilter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/ImageAlgorithm.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/Iterative.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/LinearTransformation.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/NotLinearTransformation.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/Previewer.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/Process.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/Rotate.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/Scope.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/Threshold.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/TransformAlgorithm.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/imageView/Translation.java" charset="GBK" />
+  </component>
+</project>
