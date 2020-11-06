@@ -134,28 +134,34 @@ public class TransformAlgorithm
 	 * @param ori 实部（输入）
 	 * @param goal 虚部（输出）
 	 * @param trans 变换方向
-	 * @param xLen 宽度
-	 * @param yLen 高度
+	 * @param xlen 宽度
+	 * @param ylen 高度
 	 */
-	public static void FFFor2(float[][] ori, float[][] goal, int trans, int xLen, int yLen)
+	public static void FFFor2(float[][] ori, float[][] goal, int trans, int xlen, int ylen)
 	{
+		int i;
+		float[][] aim1 = new float[xlen][];
+		float[][] aim2 = new float[xlen][];
+		for (i = 0; i < xlen; i++)
+		{
+			aim1[i] = new float[ylen];
+			aim2[i] = new float[ylen];
+		}
+		float[] sinT = new float[xlen];
+		float[] cosT = new float[xlen];
+		float[] sinTV = new float[ylen];
+		float[] cosTV = new float[ylen];
+		float[] styx = new float[xlen];
+		float[] spry = new float[ylen];
+		scResult(xlen, trans, sinT, cosT);
+		scResult(ylen, trans, sinTV, cosTV);
+		ppoww(ori, goal, xlen, ylen, aim1, aim2, sinT, cosT, styx);
+		ppoww(aim1, aim2, ylen, xlen, ori, goal, sinTV, cosTV, spry);
+	}
+
+	private static void ppoww(float[][] ori, float[][] goal, int xLen, int yLen, float[][] aim1, float[][] aim2, float[] sinT, float[] cosT, float[] styx) {
 		int pow;
 		int i;
-		float[][] aim1 = new float[xLen][];
-		float[][] aim2 = new float[xLen][];
-		for (i = 0; i < xLen; i++)
-		{
-			aim1[i] = new float[yLen];
-			aim2[i] = new float[yLen];
-		}
-		float[] sinT = new float[xLen];
-		float[] cosT = new float[xLen];
-		float[] sinTV = new float[yLen];
-		float[] cosTV = new float[yLen];
-		float[] styx = new float[xLen];
-		float[] spry = new float[yLen];
-		scResult(xLen, trans, sinT, cosT);
-		scResult(yLen, trans, sinTV, cosTV);
 		pow = (int) (Math.log(xLen) / Math.log(2));
 		for (i = 0; i < yLen; i++)
 		{
@@ -163,15 +169,9 @@ public class TransformAlgorithm
 		}
 		transform(ori, aim1, xLen, yLen);
 		transform(goal, aim2, xLen, yLen);
-		pow = (int) (Math.log(yLen) / Math.log(2));
-		for (i = 0; i < xLen; i++)
-		{
-			mainFFT(aim1[i], aim2[i], yLen, pow, sinTV, cosTV, spry);
-		}
-		transform(aim1, ori, yLen, xLen);
-		transform(aim2, goal, yLen, xLen);
 	}
-	/** 
+
+	/**
 	 * 小波变换
 	 */
 	public static void wavelet(float[] num1, int len1, float[] a, float[] b, int top,
