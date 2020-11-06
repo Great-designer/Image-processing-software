@@ -340,9 +340,13 @@ public class ImageAlgorithm
 	{
 		int horizon = source.getWidth();
 		int vertical = source.getHeight();
-		int i;
 		int[] sColors = ImageAlgorithm.grayScale(source).getRGB(0, 0, horizon, vertical, null, 0, horizon);
 		BufferedImage resultImage = new BufferedImage(horizon, vertical, BufferedImage.TYPE_INT_RGB);
+		return getBufferedImage(t, horizon, vertical, sColors, resultImage);
+	}
+
+	private static BufferedImage getBufferedImage(int t, int horizon, int vertical, int[] sColors, BufferedImage resultImage) {
+		int i;
 		for (i = 0; i < sColors.length; i++)
 		{
 			if ((sColors[i] & 0x000000ff) <= t)
@@ -357,6 +361,7 @@ public class ImageAlgorithm
 		resultImage.setRGB(0, 0, horizon, vertical, sColors, 0, horizon);
 		return resultImage;
 	}
+
 	/**
 	 * iterative：迭代阈值分割
 	 */
@@ -394,19 +399,7 @@ public class ImageAlgorithm
 				x2 = x;
 			}
 		}
-		for (i = 0; i < sColors.length; i++)
-		{
-			if ((sColors[i] & 0x000000ff) <= x2)
-			{
-				sColors[i] = 0xff000000;
-			}
-			else
-			{
-				sColors[i] = 0xffffffff;
-			}
-		}
-		resultImage.setRGB(0, 0, horizon, vertical, sColors, 0, horizon);
-		return resultImage;
+		return getBufferedImage(x2, horizon, vertical, sColors, resultImage);
 	}
 	/**
 	 * oahu：Oahu法
