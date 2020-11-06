@@ -185,7 +185,7 @@ public class FFTFilter extends javax.swing.JDialog
     	source = image;
     	fftImage = createFFTImage();
     	int a = 0;
-    	int b = (int)Math.round(Math.sqrt((double)(lenx * lenx /4)+ (double)(leny * leny /4)))+2;
+    	int b = (int)Math.round(Math.sqrt((double)(lynx * lynx /4)+ (double)(lenny * lenny /4)))+2;
     	innerSlider.setMaximum(b);
     	innerSlider.setValue(a);
     	outerSlider.setMaximum(b);
@@ -199,48 +199,48 @@ public class FFTFilter extends javax.swing.JDialog
 		int i, j;
 		int horizon = source.getWidth();
 		int vertical = source.getHeight();
-		lenx = 1;
+		lynx = 1;
 		//傅里叶处理的是2的倍数，处理的时候截取部分图像
-		for(i=horizon/2; i>0; i/=2) lenx *= 2;
-		lenx = lenx > 1 ? lenx : 0;
-		leny = 1;
-		for(i=vertical/2; i>0; i/=2) leny *= 2;
-		leny = leny > 1 ? leny : 0;
-		BufferedImage fftImage = new BufferedImage(lenx, leny, BufferedImage.TYPE_INT_RGB);
+		for(i=horizon/2; i>0; i/=2) lynx *= 2;
+		lynx = lynx > 1 ? lynx : 0;
+		lenny = 1;
+		for(i=vertical/2; i>0; i/=2) lenny *= 2;
+		lenny = lenny > 1 ? lenny : 0;
+		BufferedImage fftImage = new BufferedImage(lynx, lenny, BufferedImage.TYPE_INT_RGB);
 		//得到处理的点
-		int[] sourceRGBs = source.getRGB(0, 0, lenx, leny, null, 0, lenx);
+		int[] sourceRGBs = source.getRGB(0, 0, lynx, lenny, null, 0, lynx);
 		//实部数组
-		ori = new float[leny][];
+		ori = new float[lenny][];
 	    //虚部数组
-		goal = new float[leny][];
-		float[][] gra = new float[leny][];
-		for(i=0; i< leny; i++)
+		goal = new float[lenny][];
+		float[][] gra = new float[lenny][];
+		for(i=0; i< lenny; i++)
 		{
-			ori[i] = new float[lenx];
-			goal[i] = new float[lenx];
+			ori[i] = new float[lynx];
+			goal[i] = new float[lynx];
 			//最后的值数组
-			gra[i] = new float[lenx];
+			gra[i] = new float[lynx];
 		}
 		int[] color = new int[3];
 		float[] remix = new float[3];
-		for(i=0; i< leny; i++)
+		for(i=0; i< lenny; i++)
 		{
-			for(j=0; j< lenx; j++)
+			for(j=0; j< lynx; j++)
 			{
-				Process.convertRGBToRemix(sourceRGBs[i* lenx +j], remix);
+				Process.convertRGBToRemix(sourceRGBs[i* lynx +j], remix);
 				//灰度化
 				ori[i][j] = remix[0];
 				goal[i][j] = 0;
 			}
 		}
-		TransformAlgorithm.FFFor2(ori, goal, TransformAlgorithm.DFT, lenx, leny);
+		TransformAlgorithm.FFFor2(ori, goal, TransformAlgorithm.DFT, lynx, lenny);
 		//正无穷大
 		float min = Float.POSITIVE_INFINITY;
 		//负无穷大
 		float max = Float.NEGATIVE_INFINITY;
-		for(i=0; i< leny; i++)
+		for(i=0; i< lenny; i++)
 		{
-			for(j=0; j< lenx; j++)
+			for(j=0; j< lynx; j++)
 			{
 				//取得能量谱
 				float norm = ori[i][j]*ori[i][j]+goal[i][j]*goal[i][j];
@@ -251,9 +251,9 @@ public class FFTFilter extends javax.swing.JDialog
 				if(gra[i][j] < min) min = gra[i][j];
 			}
 		}
-		for(i=0; i< leny; i++)
+		for(i=0; i< lenny; i++)
 		{
-			for(j=0; j< lenx; j++)
+			for(j=0; j< lynx; j++)
 			{
 				//换算成灰度值
 				color[0] = (int)((gra[i][j]-min)*255/(max-min));
@@ -272,11 +272,11 @@ public class FFTFilter extends javax.swing.JDialog
 		int[] sourceRGBs = source.getRGB(0, 0, horizon, vertical, null, 0, horizon);
 		BufferedImage resultImage = new BufferedImage(horizon, vertical, BufferedImage.TYPE_INT_RGB);
 		resultImage.setRGB(0, 0, horizon, vertical, sourceRGBs, 0, horizon);
-		for(int i = 0; i< leny; i++)
+		for(int i = 0; i< lenny; i++)
 		{
-			for(int j = 0; j< lenx; j++)
+			for(int j = 0; j< lynx; j++)
 			{
-				float r = (float)Math.sqrt((double)((j- lenx /2)*(j- lenx /2))+(double)((i- leny /2)*(i- leny /2)));
+				float r = (float)Math.sqrt((double)((j- lynx /2)*(j- lynx /2))+(double)((i- lenny /2)*(i- lenny /2)));
 				if(r < a || r > b)
 				{
 					ori[i][j] = 0;
@@ -284,20 +284,20 @@ public class FFTFilter extends javax.swing.JDialog
 				}
 			}
 		}
-		TransformAlgorithm.FFFor2(ori, goal, TransformAlgorithm.IDA, lenx, leny);
+		TransformAlgorithm.FFFor2(ori, goal, TransformAlgorithm.IDA, lynx, lenny);
 		float max = 0, min = 500;
-		for(int i = 0; i< leny; i++)
+		for(int i = 0; i< lenny; i++)
 		{
-			for(int j = 0; j< lenx; j++)
+			for(int j = 0; j< lynx; j++)
 			{
 				if(max < ori[i][j]) max = ori[i][j];
 				if(min > ori[i][j]) min = ori[i][j];
 			}
 		}
 		float[] remix = new float[3];
-		for(int i = 0; i< leny; i++)
+		for(int i = 0; i< lenny; i++)
 		{
-			for(int j = 0; j< lenx; j++)
+			for(int j = 0; j< lynx; j++)
 			{
 				Process.convertRGBToRemix(sourceRGBs[i*horizon+j], remix);
 				remix[0] = (ori[i][j]-min)*255/(max-min);
@@ -314,7 +314,7 @@ public class FFTFilter extends javax.swing.JDialog
     private BufferedImage source;
     private BufferedImage resultImage;
     private BufferedImage fftImage;
-    private int lenx, leny;
+    private int lynx, lenny;
     float[][] ori;
     float[][] goal;
 }

@@ -118,10 +118,10 @@ public class TransformAlgorithm
 			num1[i] = num2[i];
 		}
 	}
-	private static void transform(float[][] num1, float[][] num2, int size, int leny)
+	private static void transform(float[][] num1, float[][] num2, int size, int lenny)
 	{
 		int i, j;
-		for(j = 0; j < leny; j++)
+		for(j = 0; j < lenny; j++)
 		{
 			for(i = 0; i < size; i++)
 			{
@@ -134,32 +134,32 @@ public class TransformAlgorithm
 	 * @param ori 实部（输入）
 	 * @param goal 虚部（输出）
 	 * @param trans 变换方向
-	 * @param xlen 宽度
-	 * @param ylen 高度
+	 * @param xylene 宽度
+	 * @param yen 高度
 	 */
-	public static void FFFor2(float[][] ori, float[][] goal, int trans, int xlen, int ylen)
+	public static void FFFor2(float[][] ori, float[][] goal, int trans, int xylene, int yen)
 	{
 		int i;
-		float[][] aim1 = new float[xlen][];
-		float[][] aim2 = new float[xlen][];
-		for (i = 0; i < xlen; i++)
+		float[][] aim1 = new float[xylene][];
+		float[][] aim2 = new float[xylene][];
+		for (i = 0; i < xylene; i++)
 		{
-			aim1[i] = new float[ylen];
-			aim2[i] = new float[ylen];
+			aim1[i] = new float[yen];
+			aim2[i] = new float[yen];
 		}
-		float[] sinT = new float[xlen];
-		float[] cosT = new float[xlen];
-		float[] sinTV = new float[ylen];
-		float[] cosTV = new float[ylen];
-		float[] styx = new float[xlen];
-		float[] spry = new float[ylen];
-		scResult(xlen, trans, sinT, cosT);
-		scResult(ylen, trans, sinTV, cosTV);
-		ppoww(ori, goal, xlen, ylen, aim1, aim2, sinT, cosT, styx);
-		ppoww(aim1, aim2, ylen, xlen, ori, goal, sinTV, cosTV, spry);
+		float[] sinT = new float[xylene];
+		float[] cosT = new float[xylene];
+		float[] sinTV = new float[yen];
+		float[] cosTV = new float[yen];
+		float[] styx = new float[xylene];
+		float[] spry = new float[yen];
+		scResult(xylene, trans, sinT, cosT);
+		scResult(yen, trans, sinTV, cosTV);
+		powwow(ori, goal, xylene, yen, aim1, aim2, sinT, cosT, styx);
+		powwow(aim1, aim2, yen, xylene, ori, goal, sinTV, cosTV, spry);
 	}
 
-	private static void ppoww(float[][] ori, float[][] goal, int xLen, int yLen, float[][] aim1, float[][] aim2, float[] sinT, float[] cosT, float[] styx) {
+	private static void powwow(float[][] ori, float[][] goal, int xLen, int yLen, float[][] aim1, float[][] aim2, float[] sinT, float[] cosT, float[] styx) {
 		int pow;
 		int i;
 		pow = (int) (Math.log(xLen) / Math.log(2));
@@ -421,14 +421,14 @@ public class TransformAlgorithm
 				c = (int) d1;
 				t1 = d1 - c;
 				d = c + 1 >= sourceWidth ? c : c + 1;
-				pprocolor(sourceWidth, sourceRGBs, a, b, c, d, t1, t2, point1, point2, point3, point4, color);
+				proctor(sourceWidth, sourceRGBs, a, b, c, d, t1, t2, point1, point2, point3, point4, color);
 				resultImage.setRGB(i, j, Process.mergeColor(color));
 			}
 		}
 		return resultImage;
 	}
 
-	private static void pprocolor(int sourceWidth, int[] sourceRGBs, int a, int b, int c, int d, float t1, float t2, int[] point1, int[] point2, int[] point3, int[] point4, int[] color) {
+	private static void proctor(int sourceWidth, int[] sourceRGBs, int a, int b, int c, int d, float t1, float t2, int[] point1, int[] point2, int[] point3, int[] point4, int[] color) {
 		Process.getColor(sourceRGBs[a * sourceWidth + c], point1);
 		Process.getColor(sourceRGBs[a * sourceWidth + d], point2);
 		Process.getColor(sourceRGBs[b * sourceWidth + c], point3);
@@ -524,7 +524,7 @@ public class TransformAlgorithm
 				{
 					b = a + 1 >= sourceHeight ? a : a + 1;
 					d = c + 1 >= sourceWidth ? c : c + 1;
-					pprocolor(sourceWidth, sourceRGBs, a, b, c, d, t1, t2, point1, point2, point3, point4, color);
+					proctor(sourceWidth, sourceRGBs, a, b, c, d, t1, t2, point1, point2, point3, point4, color);
 				}
 				else
 				{
