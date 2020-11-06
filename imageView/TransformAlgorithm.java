@@ -421,19 +421,24 @@ public class TransformAlgorithm
 				c = (int) d1;
 				t1 = d1 - c;
 				d = c + 1 >= sourceWidth ? c : c + 1;
-				Process.getColor(sourceRGBs[a * sourceWidth + c], point1);
-				Process.getColor(sourceRGBs[a * sourceWidth + d], point2);
-				Process.getColor(sourceRGBs[b * sourceWidth + c], point3);
-				Process.getColor(sourceRGBs[b * sourceWidth + d], point4);
-				for (int k = 0; k < 3; k++)
-				{
-					color[k] = Math.round(Process.biLinear(point1[k], point2[k], point3[k], point4[k], t1, t2));
-				}
+				pprocolor(sourceWidth, sourceRGBs, a, b, c, d, t1, t2, point1, point2, point3, point4, color);
 				resultImage.setRGB(i, j, Process.mergeColor(color));
 			}
 		}
 		return resultImage;
 	}
+
+	private static void pprocolor(int sourceWidth, int[] sourceRGBs, int a, int b, int c, int d, float t1, float t2, int[] point1, int[] point2, int[] point3, int[] point4, int[] color) {
+		Process.getColor(sourceRGBs[a * sourceWidth + c], point1);
+		Process.getColor(sourceRGBs[a * sourceWidth + d], point2);
+		Process.getColor(sourceRGBs[b * sourceWidth + c], point3);
+		Process.getColor(sourceRGBs[b * sourceWidth + d], point4);
+		for (int k = 0; k < 3; k++)
+		{
+			color[k] = Math.round(Process.biLinear(point1[k], point2[k], point3[k], point4[k], t1, t2));
+		}
+	}
+
 	/*
 	 * º¯ÊýÃû³Æ£ºÍ¼ÏñÐý×ª 
 	 * Ëã·¨ÃèÊö£º(1)Çó×î´ó³ß´ç·Ö½ØÈ¡Æ¥Åä¡¢À©´óÆ¥Åä
@@ -519,14 +524,7 @@ public class TransformAlgorithm
 				{
 					b = a + 1 >= sourceHeight ? a : a + 1;
 					d = c + 1 >= sourceWidth ? c : c + 1;
-					Process.getColor(sourceRGBs[a * sourceWidth + c], point1);
-					Process.getColor(sourceRGBs[a * sourceWidth + d], point2);
-					Process.getColor(sourceRGBs[b * sourceWidth + c], point3);
-					Process.getColor(sourceRGBs[b * sourceWidth + d], point4);
-					for (int k = 0; k < 3; k++)
-					{
-						color[k] = Math.round(Process.biLinear(point1[k], point2[k], point3[k], point4[k], t1, t2));
-					}
+					pprocolor(sourceWidth, sourceRGBs, a, b, c, d, t1, t2, point1, point2, point3, point4, color);
 				}
 				else
 				{
