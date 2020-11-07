@@ -47,13 +47,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -72,7 +74,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1604680223224</updated>
-      <workItem from="1604680224667" duration="1039000" />
+      <workItem from="1604680224667" duration="1380000" />
+      <workItem from="1604740545237" duration="192000" />
     </task>
     <servers />
   </component>
@@ -80,26 +83,30 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="398" y="208" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1604681211344">
+    <state x="398" y="208" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1604681519634">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="398" y="208" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1604681211344" />
-    <state width="1237" height="155" key="GridCell.Tab.0.bottom" timestamp="1604681212802">
+    <state x="398" y="208" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1280.680@0.0.1280.680" timestamp="1604681519634" />
+    <state x="421" y="67" key="FileChooserDialogImpl" timestamp="1604740588766">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="155" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1604681212802" />
-    <state width="1237" height="155" key="GridCell.Tab.0.center" timestamp="1604681212802">
+    <state x="421" y="67" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1604740588766" />
+    <state width="1237" height="155" key="GridCell.Tab.0.bottom" timestamp="1604681617115">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="155" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1604681212802" />
-    <state width="1237" height="155" key="GridCell.Tab.0.left" timestamp="1604681212801">
+    <state width="1237" height="155" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1604681617115" />
+    <state width="1237" height="155" key="GridCell.Tab.0.center" timestamp="1604681617115">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="155" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1604681212801" />
-    <state width="1237" height="155" key="GridCell.Tab.0.right" timestamp="1604681212802">
+    <state width="1237" height="155" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1604681617115" />
+    <state width="1237" height="155" key="GridCell.Tab.0.left" timestamp="1604681617115">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="155" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1604681212802" />
+    <state width="1237" height="155" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1604681617115" />
+    <state width="1237" height="155" key="GridCell.Tab.0.right" timestamp="1604681617115">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="155" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1604681617115" />
     <state x="210" y="107" key="extract.method.dialog" timestamp="1604681194748">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

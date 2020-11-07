@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="1967.0" y="2045.5">imageView.Previewer</node>
+    <node x="1803.5" y="-18.0">imageView.Panel</node>
+    <node x="1803.5" y="273.5">imageView.FFTImage</node>
+    <node x="961.5" y="-19.0">imageView.FFTFilter</node>
+    <node x="293.5" y="-25.0">imageView.NotLinearTransformation</node>
+    <node x="-11.0" y="-6.0">imageView.Frame</node>
+    <node x="-26.0" y="2067.0">imageView.Translation</node>
+    <node x="1153.5" y="2067.5">imageView.IFileFilter</node>
+    <node x="1277.5" y="-23.5">imageView.TransformAlgorithm</node>
+    <node x="1462.0" y="2079.0">imageView.Iterative</node>
+    <node x="1697.0" y="2062.0">imageView.Threshold</node>
+    <node x="268.0" y="2078.5">imageView.Scope</node>
+    <node x="760.0" y="2069.0">imageView.Process</node>
+    <node x="506.5" y="2044.5">imageView.Rotate</node>
+    <node x="664.5" y="-25.0">imageView.LinearTransformation</node>
+    <node x="2090.0" y="0.0">imageView.ImageAlgorithm</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="imageView.FFTImage" target="imageView.Panel">
+      <point x="0.0" y="-86.5" />
+      <point x="0.0" y="98.0" />
+    </edge>
+  </edges>
+  <settings layout="Orthogonal" zoom="0.30000000000000004" x="1422.9999999999993" y="793.3333333333333" />
+  <SelectedNodes />
+  <Categories>
+    <Category>字段</Category>
+    <Category>构造函数</Category>
+    <Category>方法</Category>
+    <Category>属性</Category>
+    <Category>内部类</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
